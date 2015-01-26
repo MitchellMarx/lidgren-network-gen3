@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !LIDGREN_MONO
+using System;
 using System.IO;
 using System.Xml;
 using System.Net;
@@ -264,3 +265,4 @@ namespace Lidgren.Network
 		}
 	}
 }
+#endif // !LIDGREN_MONO

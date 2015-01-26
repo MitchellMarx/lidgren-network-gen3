@@ -58,10 +58,12 @@ namespace Lidgren.Network
 		/// </summary>
 		public int Port { get { return m_listenPort; } }
 
+#if !LIDGREN_MONO
 		/// <summary>
 		/// Returns an UPnP object if enabled in the NetPeerConfiguration
 		/// </summary>
 		public NetUPnP UPnP { get { return m_upnp; } }
+#endif // !LIDGREN_MONO
 
 		/// <summary>
 		/// Gets or sets the application defined object containing data about the peer
@@ -150,10 +152,11 @@ namespace Lidgren.Network
 			m_networkThread.Name = m_configuration.NetworkThreadName;
 			m_networkThread.IsBackground = true;
 			m_networkThread.Start();
-
+#if !LIDGREN_MONO
 			// send upnp discovery
 			if (m_upnp != null)
 				m_upnp.Discover(this);
+#endif // !LIDGREN_MONO
 
 			// allow some time for network thread to start up in case they call Connect() or UPnP calls immediately
 			Thread.Sleep(50);

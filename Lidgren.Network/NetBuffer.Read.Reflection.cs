@@ -93,7 +93,7 @@ namespace Lidgren.Network
 					value = readMethod.Invoke(this, null);
 
 					// set the value
-#if UNITY_WEBPLAYER || UNITY_4_5
+#if UNITY_WEBPLAYER || UNITY_4_5 || LIDGREN_MONO
 					var setMethod = fi.GetSetMethod();
 #else
 					var setMethod = fi.SetMethod;

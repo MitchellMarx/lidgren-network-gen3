@@ -25,7 +25,9 @@ namespace Lidgren.Network
 		private uint m_frameCounter;
 		private double m_lastHeartbeat;
 		private double m_lastSocketBind = float.MinValue;
+#if !LIDGREN_MONO
 		private NetUPnP m_upnp;
+#endif // !LIDGREN_MONO
 		internal bool m_needFlushSendQueue;
 
 		internal readonly NetPeerConfiguration m_configuration;
@@ -161,9 +163,10 @@ namespace Lidgren.Network
 
 				if (m_status == NetPeerStatus.Running)
 					return;
-
+#if !LIDGREN_MONO
 				if (m_configuration.m_enableUPnP)
 					m_upnp = new NetUPnP(this);
+#endif // !LIDGREN_MONO
 
 				InitializePools();
 
@@ -463,6 +466,7 @@ namespace Lidgren.Network
 
 				IPEndPoint ipsender = (IPEndPoint)m_senderRemote;
 
+#if !LIDGREN_MONO
 				if (m_upnp != null && now < m_upnp.m_discoveryResponseDeadline && bytesReceived > 32)
 				{
 					// is this an UPnP response?
@@ -485,6 +489,7 @@ namespace Lidgren.Network
 						}
 					}
 				}
+#endif // !LIDGREN_MONO
 
 				NetConnection sender = null;
 				m_connectionLookup.TryGetValue(ipsender, out sender);

@@ -78,7 +78,7 @@ namespace Lidgren.Network
 
 			foreach (PropertyInfo fi in fields)
 			{
-#if UNITY_WEBPLAYER || UNITY_4_5 || LIDGREN_MONO
+#if UNITY_WEBPLAYER || UNITY_4_5 || UNITY_4_6 || LIDGREN_MONO
 				MethodInfo getMethod = fi.GetGetMethod();
 #else
 				MethodInfo getMethod = fi.GetMethod;

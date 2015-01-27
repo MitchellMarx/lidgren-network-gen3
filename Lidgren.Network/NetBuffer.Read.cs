@@ -1,8 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+#if GOOD_OL_SOCKETS
+using LostPolygon.System.Net;
+#else
 using System.Net;
+#endif
 
 namespace Lidgren.Network
 {

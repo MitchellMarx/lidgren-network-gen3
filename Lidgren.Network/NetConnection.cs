@@ -1,5 +1,9 @@
-﻿using System;
+using System;
+#if GOOD_OL_SOCKETS
+using LostPolygon.System.Net;
+#else
 using System.Net;
+#endif
 using System.Threading;
 using System.Diagnostics;
 

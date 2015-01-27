@@ -1,4 +1,4 @@
-﻿/* Copyright (c) 2010 Michael Lidgren
+/* Copyright (c) 2010 Michael Lidgren
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 and associated documentation files (the "Software"), to deal in the Software without
@@ -16,18 +16,30 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#if !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE
+#if UNITY_PRO_LICENSE && !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE
 #define IS_FULL_NET_AVAILABLE
 #endif
 
 using System;
+
+
+#if GOOD_OL_SOCKETS
+
+using LostPolygon.System.Net;
+using LostPolygon.System.Net.NetworkInformation;
+using LostPolygon.System.Net.Sockets;
+
+#else // GOOD_OL_SOCKETS
+
 using System.Net;
+using System.Net.Sockets;
 
 #if IS_FULL_NET_AVAILABLE
 using System.Net.NetworkInformation;
-#endif
+#endif // IS_FULL_NET_AVAILABLE
 
-using System.Net.Sockets;
+#endif // GOOD_OL_SOCKETS
+
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;

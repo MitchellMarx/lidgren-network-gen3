@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 
 namespace Lidgren.Network
 {
+#if !UNITY_4_6
 	public class NetAESEncryption : NetCryptoProviderBase
 	{
 		public NetAESEncryption(NetPeer peer)
@@ -23,4 +24,5 @@ namespace Lidgren.Network
 			SetKey(data, offset, count);
 		}
 	}
+#endif // !UNITY_4_5
 }

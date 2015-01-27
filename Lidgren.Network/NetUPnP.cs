@@ -1,9 +1,14 @@
-﻿#if !LIDGREN_MONO
+#if !LIDGREN_MONO
 using System;
 using System.IO;
 using System.Xml;
+#if GOOD_OL_SOCKETS
+using LostPolygon.System.Net;
+using LostPolygon.System.Net.Sockets;
+#else
 using System.Net;
 using System.Net.Sockets;
+#endif
 using System.Threading;
 
 namespace Lidgren.Network

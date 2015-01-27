@@ -1,4 +1,4 @@
-﻿//#define UNSAFE
+//#define UNSAFE
 //#define BIGENDIAN
 /* Copyright (c) 2010 Michael Lidgren
 
@@ -20,7 +20,11 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 using System;
 using System.Collections.Generic;
+#if GOOD_OL_SOCKETS
+using LostPolygon.System.Net;
+#else
 using System.Net;
+#endif
 using System.Reflection;
 using System.Text;
 using System.Runtime.InteropServices;

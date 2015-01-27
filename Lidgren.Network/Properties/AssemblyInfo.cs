@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿#if !UNITY_4_6
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -35,3 +36,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("2012.1.7.0")]
 [assembly: AssemblyFileVersion("2012.1.7.0")]
 [assembly: System.CLSCompliant(true)]
+#endif // !UNITY_4_6

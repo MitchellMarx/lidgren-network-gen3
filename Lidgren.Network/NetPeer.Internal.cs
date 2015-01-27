@@ -1,13 +1,21 @@
-﻿#if !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE
+#if !GOOD_OL_SOCKETS && !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE
 #define IS_MAC_AVAILABLE
 #endif
 
 using System;
-using System.Net;
 using System.Threading;
 using System.Diagnostics;
 using System.Security.Cryptography;
+#if GOOD_OL_SOCKETS
+using LostPolygon.System.Net;
+using LostPolygon.System.Net.Sockets;
+#if IS_MAC_AVAILABLE
+using System.Net.NetworkInformation;
+#endif
+#else
+using System.Net;
 using System.Net.Sockets;
+#endif
 using System.Collections.Generic;
 
 namespace Lidgren.Network
@@ -188,7 +196,7 @@ namespace Lidgren.Network
 #if IS_MAC_AVAILABLE
 				try
 				{
-					System.Net.NetworkInformation.PhysicalAddress pa = NetUtility.GetMacAddress();
+					PhysicalAddress pa = NetUtility.GetMacAddress();
 					if (pa != null)
 					{
 						macBytes = pa.GetAddressBytes();

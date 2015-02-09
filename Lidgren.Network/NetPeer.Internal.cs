@@ -1,4 +1,4 @@
-#if !GOOD_OL_SOCKETS && !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE
+#if !GOOD_OL_SOCKETS && !__ANDROID__ && !IOS && !UNITY_WEBPLAYER && !UNITY_ANDROID && !UNITY_IPHONE && !LIDGREN_MONO
 #define IS_MAC_AVAILABLE
 #endif
 
@@ -17,7 +17,7 @@ using System.Net;
 using System.Net.Sockets;
 #endif
 using System.Collections.Generic;
-
+ 
 namespace Lidgren.Network
 {
 	public partial class NetPeer
